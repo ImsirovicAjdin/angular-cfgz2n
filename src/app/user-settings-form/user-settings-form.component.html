@@ -3,7 +3,8 @@
       <form #form="ngForm" (ngSubmit)="onSubmit(form)">
         <div class="form-group">
         <label for="name"></label>
-        <input id="name" name="name" class="form-control" placeholder="Name" [(ngModel)]="userSettings.name" required #classTest #propertyTest="ngModel" #nameField="ngModel" (blur)="onBlur(nameField)" [class.field-error]="form.submitted && nameField.invalid" />
+        <input id="name" name="name" class="form-control" placeholder="Name" [(ngModel)]="userSettings.name" required #nameField="ngModel" (blur)="onBlur(nameField)" [class.field-error]="form.submitted && nameField.invalid"/>
+
         <!--
         <div [hidden]="nameField.valid || nameField.untouched" class="alert alert-danger p-1 text-small">
         -->
@@ -11,6 +12,21 @@
           Enter a name
         </div>
       </div>
+
+
+<!--
+ERROR
+Error: If ngModel is used within a form tag, either the name attribute must be set or the form
+control must be defined as 'standalone' in ngModelOptions.
+
+Example 1: <input [(ngModel)]="person.firstName" name="first">
+Example 2: <input [(ngModel)]="person.firstName" [ngModelOptions]="{standalone: true}">
+-->
+      <button type="button" class="btn btn-primary" name="singleModel"
+        [(ngModel)]="singleModel" btnCheckbox
+        btnCheckboxTrue="On" btnCheckboxFalse="Off" [ngModelOptions]="{standalone: true}">
+        Single Toggle
+      </button>
 
       <div [hidden]="!nameField.dirty" class="form-check form-group">
         <input class="form-check-input" type="checkbox" id="emailOffers" name="emailOffers" [(ngModel)]="userSettings.emailOffers" #emailOffersField="ngModel">
