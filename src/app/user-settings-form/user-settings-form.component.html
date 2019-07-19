@@ -42,18 +42,7 @@
       <div class="form-group">
         <label for="subscriptionType">Subscription Type</label>
         <select class="form-control" id="subscriptionType" name="subscriptionType" [(ngModel)]="userSettings.subscriptionType">
-          <!-- (1) 
-<option *ngFor="let type of subscriptionTypes">{{ type }}</option> 
-We have a select element in our form with several options. It's extremely common to get these options off of some kind of data service. 
-That way they can be built dynamically on the server side or even built in the data service itself. 
-Let's take a look at our template for our form, and find the select element. Here's our template, and scrolling down, here's our select tag with several options. Let's get these from the DataService instead. I'll delete two options, and in the first option, we'll see the ngFor directive, that's *ngFor.
-And that'll let us create several options based on data. So we'll say let type of subscriptionTypes. So we need a property on our class called 
-subscriptionTypes, and for each one of those subscriptionTypes, it'll be assigned to the variable type, so let's show that in the option.
-          -->
-          <option *ngFor="let type of subscriptionTypes | async">{{ type }}</option><!-- (7) -->
-<!-- (7)
-One last thing we need to do is to go back to our template, and subscriptionTypes is now an observable, so we need to use what's called the async pipe. We use the pipe symbol and the keyword async. This will wait until the observable has gotten its data and is completed until it builds up our options. So I'll make sure everything's saved with a Save All, and let's take a look at our form. I'll look at the Subscription Types, and we get Monthly, Annual, and Lifetime. So that covers all the data scenarios I wanted to cover in this module. We'll wrap things up with a summary.
--->
+          <option *ngFor="let type of subscriptionTypes | async">{{ type }}</option>
         </select>
       </div>
 
